@@ -1,5 +1,3 @@
-console.log('hello');
-
 let todoTasks = [];
 let completedTasks = [];
 let taskId = 0;
@@ -8,16 +6,26 @@ let completed = true;
 
 let descriptionTask;
 
-// const todo = {
-//     id:
-//     description:
-//     done:
-// }
+function showAllTasks() {
+  if (todoTasks.length === 0) {
+    alert('Inga uppgifter att visa.');
+    return;
+  }
+
+  let tasksDescription = '';
+
+  for (let i = 0; i < todoTasks.length; i++) {
+    tasksDescription += todoTasks[i].taskDescription + '\n';
+  }
+
+  alert('Din att göra lista: \n' + tasksDescription);
+}
+
 while (completed) {
   function addTasks(descriptionTask) {
     const todo = {
       id: taskId++,
-      description: descriptionTask,
+      taskDescription: descriptionTask,
       done: false,
     };
 
@@ -40,6 +48,7 @@ while (completed) {
       addTasks(descriptionTask);
       break;
     case '2':
+      showAllTasks();
       break;
     case '3':
       break;
