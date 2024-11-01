@@ -21,7 +21,9 @@ function showAllTasks() {
   alert('Din att göra lista: \n' + tasksDescription);
 }
 
-function taskComplete() {}
+function taskComplete() {
+  5;
+}
 
 while (completed) {
   function addTasks(descriptionTask) {
