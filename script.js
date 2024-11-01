@@ -23,6 +23,7 @@ while (completed) {
 
     todoTasks.push(todo);
     console.log(todoTasks);
+    alert('La till: ' + descriptionTask);
   }
 
   let chosenOption = prompt(`
