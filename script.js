@@ -21,6 +21,8 @@ function showAllTasks() {
   alert('Din att göra lista: \n' + tasksDescription);
 }
 
+function taskComplete() {}
+
 while (completed) {
   function addTasks(descriptionTask) {
     const todo = {
@@ -51,6 +53,7 @@ while (completed) {
       showAllTasks();
       break;
     case '3':
+      taskComplete();
       break;
     case '4':
       break;
