@@ -63,6 +63,6 @@ while (completed) {
       completed = false;
       break;
     default:
-      alert('error');
+      alert('Error: måste ange 1-5');
   }
 }
