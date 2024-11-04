@@ -21,23 +21,23 @@ function showAllTasks() {
   alert('Din att göra lista: \n' + tasksDescription);
 }
 
+function addTasks(descriptionTask) {
+  const todo = {
+    id: taskId++,
+    taskDescription: descriptionTask,
+    done: false,
+  };
+
+  todoTasks.push(todo);
+  console.log(todoTasks);
+  alert('La till: ' + descriptionTask);
+}
+
 /* function taskComplete() {
   
 } */
 
 while (completed) {
-  function addTasks(descriptionTask) {
-    const todo = {
-      id: taskId++,
-      taskDescription: descriptionTask,
-      done: false,
-    };
-
-    todoTasks.push(todo);
-    console.log(todoTasks);
-    alert('La till: ' + descriptionTask);
-  }
-
   let chosenOption = prompt(`
     1. Lägg till nya uppgifter
     2. Visa alla aktuella uppgifter.
