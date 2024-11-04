@@ -6,6 +6,7 @@ let completed = true;
 
 let descriptionTask;
 
+// Shows all tasks
 function showAllTasks() {
   if (todoTasks.length === 0) {
     alert('Inga uppgifter att visa.');
@@ -21,6 +22,7 @@ function showAllTasks() {
   alert('Din att göra lista: \n' + tasksDescription);
 }
 
+// Add tasks and then add to todoTasks array
 function addTasks(descriptionTask) {
   const todo = {
     id: taskId++,
