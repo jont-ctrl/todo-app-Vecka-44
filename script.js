@@ -16,7 +16,7 @@ function showAllTasks() {
   let tasksDescription = '';
 
   for (let i = 0; i < todoTasks.length; i++) {
-    tasksDescription += `Uppgift: ${todoTasks[i].taskDescription} Done: ${todoTasks[i].done}\n`;
+    tasksDescription += `Klar? ${todoTasks[i].done} Uppgift: ${todoTasks[i].taskDescription} \n`;
   }
 
   alert('Din att göra lista: \n' + tasksDescription);
@@ -44,7 +44,7 @@ function taskComplete() {
   let tasksDescription = '';
 
   for (let i = 0; i < todoTasks.length; i++) {
-    tasksDescription += `Uppgift: ${todoTasks[i].taskDescription} ID: ${todoTasks[i].id}\n`;
+    tasksDescription += `ID: ${todoTasks[i].id} Uppgift: ${todoTasks[i].taskDescription} \n`;
   }
 
   let taskIdToComplete = Number(
@@ -75,7 +75,7 @@ function taskRemove() {
   let tasksDescription = '';
 
   for (let i = 0; i < todoTasks.length; i++) {
-    tasksDescription += `Uppgift: ${todoTasks[i].taskDescription} ID: ${todoTasks[i].id} Klar: ${todoTasks[i].done}\n`;
+    tasksDescription += `ID: ${todoTasks[i].id} Klar? ${todoTasks[i].done} Uppgift: ${todoTasks[i].taskDescription} \n`;
   }
 
   let taskIdToRemove = Number(
