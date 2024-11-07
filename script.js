@@ -53,14 +53,8 @@ function taskComplete() {
     )
   );
 
-  console.log(taskIdToComplete);
-  console.log(typeof taskIdToComplete);
-  console.log(todoTasks);
-  console.log(typeof todoTasks);
-
   // Letar med .find() om id finns i array och om det finns returnerar true
   let findIdArray = todoTasks.find((task) => task.id === taskIdToComplete);
-  console.log(findIdArray);
 
   // Om id ej finns alert error
   if (!findIdArray) {
@@ -69,8 +63,6 @@ function taskComplete() {
   }
   // Tar den hittade ID i task array och gör om den från i objectet .done = true
   findIdArray.done = true;
-  console.log(findIdArray);
-  console.log(todoTasks);
 }
 
 function taskRemove() {
@@ -87,8 +79,6 @@ function taskRemove() {
   let taskIdToRemove = Number(
     prompt('Ange ID för uppgiften som ska raderas: \n' + tasksDescription)
   );
-
-  console.log(todoTasks);
 
   // findindex
   let findIdArray = todoTasks.findIndex((task) => task.id === taskIdToRemove);
@@ -108,8 +98,6 @@ while (completed) {
     3. Markera uppgifter som klara.
     4. Ta bort uppgifter.
     5. Avsluta programmet`);
-
-  console.log(todoTasks);
 
   switch (chosenOption) {
     case '1':
