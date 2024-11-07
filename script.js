@@ -61,6 +61,12 @@ function taskComplete() {
   // Letar med .find() om id finns i array och om det finns returnerar true
   let findIdArray = todoTasks.find((task) => task.id === taskIdToComplete);
   console.log(findIdArray);
+
+  // Om id ej finns alert error
+  if (!findIdArray) {
+    alert('Uppgiften med det ID:t finns inte.');
+    return;
+  }
   // Tar den hittade ID i task array och gör om den från i objectet .done = true
   findIdArray.done = true;
   console.log(findIdArray);
