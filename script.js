@@ -16,7 +16,7 @@ function showAllTasks() {
   let tasksDescription = '';
 
   for (let i = 0; i < todoTasks.length; i++) {
-    tasksDescription += `Uppgift: ${todoTasks[i].taskDescription} Done? ${todoTasks[i].done}\n`;
+    tasksDescription += `Uppgift: ${todoTasks[i].taskDescription} Done: ${todoTasks[i].done}\n`;
   }
 
   alert('Din att göra lista: \n' + tasksDescription);
@@ -34,6 +34,7 @@ function addTasks(descriptionTask) {
   alert('Lade till uppgift: ' + descriptionTask);
 }
 
+// Mark task as complete
 function taskComplete() {
   if (todoTasks.length === 0) {
     alert('Inga uppgifter att visa.');
@@ -48,7 +49,7 @@ function taskComplete() {
 
   let taskIdToComplete = Number(
     prompt(
-      'Ange ID för uppgiften som ska markeras som klar \n' + tasksDescription
+      'Ange ID för uppgiften som ska markeras som klar: \n' + tasksDescription
     )
   );
 
@@ -64,6 +65,34 @@ function taskComplete() {
   findIdArray.done = true;
   console.log(findIdArray);
   console.log(todoTasks);
+}
+
+function taskRemove() {
+  if (todoTasks.length === 0) {
+    alert('Inga uppgifter att visa.');
+    return;
+  }
+  let tasksDescription = '';
+
+  for (let i = 0; i < todoTasks.length; i++) {
+    tasksDescription += `Uppgift: ${todoTasks[i].taskDescription} ID: ${todoTasks[i].id} Klar: ${todoTasks[i].done}\n`;
+  }
+
+  let taskIdToRemove = Number(
+    prompt('Ange ID för uppgiften som ska raderas: \n' + tasksDescription)
+  );
+
+  console.log(todoTasks);
+
+  // findindex
+  let findIdArray = todoTasks.findIndex((task) => task.id === taskIdToRemove);
+
+  if (findIdArray === -1) {
+    alert('Uppgiften med det ID:t finns inte.');
+    return;
+  }
+  todoTasks.splice(findIdArray, 1);
+  alert('Uppgift raderad.');
 }
 
 while (completed) {
@@ -89,6 +118,7 @@ while (completed) {
       taskComplete();
       break;
     case '4':
+      taskRemove();
       break;
     case '5':
       completed = false;
