@@ -16,7 +16,7 @@ function showAllTasks() {
   let tasksDescription = '';
 
   for (let i = 0; i < todoTasks.length; i++) {
-    tasksDescription += todoTasks[i].taskDescription + '\n';
+    tasksDescription += `Uppgift: ${todoTasks[i].taskDescription} Done? ${todoTasks[i].done}\n`;
   }
 
   alert('Din att göra lista: \n' + tasksDescription);
@@ -73,6 +73,8 @@ while (completed) {
     3. Markera uppgifter som klara.
     4. Ta bort uppgifter.
     5. Avsluta programmet`);
+
+  console.log(todoTasks);
 
   switch (chosenOption) {
     case '1':
