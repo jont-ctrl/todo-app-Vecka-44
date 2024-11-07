@@ -31,13 +31,40 @@ function addTasks(descriptionTask) {
   };
 
   todoTasks.push(todo);
-  console.log(todoTasks);
-  alert('La till: ' + descriptionTask);
+  alert('Lade till uppgift: ' + descriptionTask);
 }
 
-/* function taskComplete() {
-  
-} */
+function taskComplete() {
+  if (todoTasks.length === 0) {
+    alert('Inga uppgifter att visa.');
+    return;
+  }
+
+  let tasksDescription = '';
+
+  for (let i = 0; i < todoTasks.length; i++) {
+    tasksDescription += `Uppgift: ${todoTasks[i].taskDescription} ID: ${todoTasks[i].id}\n`;
+  }
+
+  let taskIdToComplete = Number(
+    prompt(
+      'Ange ID för uppgiften som ska markeras som klar \n' + tasksDescription
+    )
+  );
+
+  console.log(taskIdToComplete);
+  console.log(typeof taskIdToComplete);
+  console.log(todoTasks);
+  console.log(typeof todoTasks);
+
+  // Letar med .find() om id finns i array och om det finns returnerar true
+  let findIdArray = todoTasks.find((task) => task.id === taskIdToComplete);
+  console.log(findIdArray);
+  // Tar den hittade ID i task array och gör om den från i objectet .done = true
+  findIdArray.done = true;
+  console.log(findIdArray);
+  console.log(todoTasks);
+}
 
 while (completed) {
   let chosenOption = prompt(`
