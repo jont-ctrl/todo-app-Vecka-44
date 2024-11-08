@@ -20,6 +20,7 @@ function showAllTasks() {
         deleteButton.onclick = () => taskRemove(task.id);
         taskItem.appendChild(deleteButton);
         
+        
         // Append the task item to the list
         taskList.appendChild(taskItem);
     });
