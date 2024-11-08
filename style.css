@@ -3,5 +3,68 @@ body {
   background-color: rgba(21, 21, 103, 0.47);
   color: white;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
 }
+/* Styling the To-Do App title*/
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+/* Input and button container*/
+#taskInput, #addTaskButton {
+  margin: 10px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: none;
+  font-size: 1rem;
+}
+/* Specific styling for the Add Task button*/
+#addTaskButton {
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+}
+#addTaskButton:hover {
+  background-color: #45A049;
+}
+/* Task list styling */
+#taskList {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+  max-width: 400px;
+}
+#taskList li {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 10px;
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 4px;
+}
+/* Styling for buttons within each task*/
+#taskList li button {
+  margin-left: 10px;
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  color: white;
+  background-color: #D9534F;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#taskList li button:hover {
+  background-color: #C9302C;
+}
+/* Specific styles for task completion*/
+.completed {
+  text-decoration: line-through;
+  color: #D3D3D3;
+   /*light gray for completed tasks*/
+}
+.pending {
+  color: white; }
