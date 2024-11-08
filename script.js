@@ -1,123 +1,66 @@
 let todoTasks = [];
-let completedTasks = [];
 let taskId = 0;
-
-let completed = true;
-
-let descriptionTask;
-
-// Shows all tasks
+// Function to display all tasks in the list
 function showAllTasks() {
-  if (todoTasks.length === 0) {
-    alert('Inga uppgifter att visa.');
-    return;
-  }
-
-  let tasksDescription = '';
-
-  for (let i = 0; i < todoTasks.length; i++) {
-    tasksDescription += `Klar? ${todoTasks[i].done} Uppgift: ${todoTasks[i].taskDescription} \n`;
-  }
-
-  alert('Din att göra lista: \n' + tasksDescription);
+    const taskList = document.getElementById("taskList");
+    taskList.innerHTML = ""; // Clear the list
+    todoTasks.forEach(task => {
+        const taskItem = document.createElement("li");
+        taskItem.className = task.done ? "completed" : "pending";
+        // Add task description
+        taskItem.innerHTML = `${task.taskDescription} `;
+        // Add complete button
+        const completeButton = document.createElement("button");
+        completeButton.textContent = "Mark Complete";
+        completeButton.onclick = () => taskComplete(task.id);
+        taskItem.appendChild(completeButton);
+        // Add delete button
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+        deleteButton.onclick = () => taskRemove(task.id);
+        taskItem.appendChild(deleteButton);
+        
+        
+        // Append the task item to the list
+        taskList.appendChild(taskItem);
+    });
 }
-
-// Add tasks and then add to todoTasks array
-function addTasks(descriptionTask) {
-  const todo = {
-    id: taskId++,
-    taskDescription: descriptionTask,
-    done: false,
-  };
-
-  todoTasks.push(todo);
-  alert('Lade till uppgift: ' + descriptionTask);
+// Function to add a new task
+function addTask() {
+    const taskInput = document.getElementById("taskInput");
+    const descriptionTask = taskInput.value.trim();
+    if (descriptionTask === "") {
+        alert("Task description cannot be empty.");
+        return;
+    }
+    const todo = {
+        id: taskId++,
+        taskDescription: descriptionTask,
+        done: false
+    };
+    todoTasks.push(todo);
+    taskInput.value = ""; // Clear the input field
+    showAllTasks(); // Refresh the list to show the new task
 }
-
-// Mark task as complete
-function taskComplete() {
-  if (todoTasks.length === 0) {
-    alert('Inga uppgifter att visa.');
-    return;
-  }
-
-  let tasksDescription = '';
-
-  for (let i = 0; i < todoTasks.length; i++) {
-    tasksDescription += `ID: ${todoTasks[i].id} Uppgift: ${todoTasks[i].taskDescription} \n`;
-  }
-
-  let taskIdToComplete = Number(
-    prompt(
-      'Ange ID för uppgiften som ska markeras som klar: \n' + tasksDescription
-    )
-  );
-
-  // Letar med .find() om id finns i array och om det finns returnerar true
-  let findIdArray = todoTasks.find((task) => task.id === taskIdToComplete);
-
-  // Om id ej finns alert error
-  if (!findIdArray) {
-    alert('Uppgiften med det ID:t finns inte.');
-    return;
-  }
-  // Tar den hittade ID i task array och gör om den från i objectet .done = true
-  findIdArray.done = true;
+// Function to mark a task as complete
+function taskComplete(id) {
+    const task = todoTasks.find(task => task.id === id);
+    if (task) {
+        task.done = true;
+        showAllTasks(); // Refresh the list to reflect the change
+    } else {
+        alert("Task not found.");
+    }
 }
-
-function taskRemove() {
-  if (todoTasks.length === 0) {
-    alert('Inga uppgifter att visa.');
-    return;
-  }
-  let tasksDescription = '';
-
-  for (let i = 0; i < todoTasks.length; i++) {
-    tasksDescription += `ID: ${todoTasks[i].id} Klar? ${todoTasks[i].done} Uppgift: ${todoTasks[i].taskDescription} \n`;
-  }
-
-  let taskIdToRemove = Number(
-    prompt('Ange ID för uppgiften som ska raderas: \n' + tasksDescription)
-  );
-
-  // findindex
-  let findIdArray = todoTasks.findIndex((task) => task.id === taskIdToRemove);
-
-  if (findIdArray === -1) {
-    alert('Uppgiften med det ID:t finns inte.');
-    return;
-  }
-  todoTasks.splice(findIdArray, 1);
-  alert('Uppgift raderad.');
+// Function to remove a task
+function taskRemove(id) {
+    const taskIndex = todoTasks.findIndex(task => task.id === id);
+    if (taskIndex !== -1) {
+        todoTasks.splice(taskIndex, 1);
+        showAllTasks(); // Refresh the list to reflect the deletion
+    } else {
+        alert("Task not found.");
+    }
 }
-
-while (completed) {
-  let chosenOption = prompt(`
-    1. Lägg till nya uppgifter
-    2. Visa alla aktuella uppgifter.
-    3. Markera uppgifter som klara.
-    4. Ta bort uppgifter.
-    5. Avsluta programmet`);
-
-  switch (chosenOption) {
-    case '1':
-      // todoTasks.push
-      descriptionTask = prompt('Lägg till en uppgift');
-      addTasks(descriptionTask);
-      break;
-    case '2':
-      showAllTasks();
-      break;
-    case '3':
-      taskComplete();
-      break;
-    case '4':
-      taskRemove();
-      break;
-    case '5':
-      completed = false;
-      break;
-    default:
-      alert('Error: måste ange 1-5');
-  }
-}
+// Event listener for adding a task when clicking the "Add Task" button
+document.getElementById("addTaskButton").addEventListener("click", addTask);
