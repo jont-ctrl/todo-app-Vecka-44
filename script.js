@@ -11,6 +11,8 @@ function showAllTasks() {
     taskItem.innerHTML = `${task.taskDescription} `;
     // Add complete button
     const completeButton = document.createElement('button');
+    // La till så complete btn får en css class så kan ändra styling
+    completeButton.classList.add('completeBtn');
     completeButton.textContent = 'Mark Complete';
     completeButton.onclick = () => taskComplete(task.id);
     taskItem.appendChild(completeButton);
