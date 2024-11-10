@@ -12,16 +12,16 @@ function showAllTasks() {
     // Add complete button
     const completeButton = document.createElement('button');
     completeButton.textContent = 'Mark Complete';
-    // La till så complete btn får en css class så kan ändra styling
-    completeButton.classList.add('completeBtn');
     completeButton.onclick = () => taskComplete(task.id);
     taskItem.appendChild(completeButton);
     // Add delete button
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'Delete';
     deleteButton.onclick = () => taskRemove(task.id);
+    deleteButton.addEventListener('click', function () {
+      taskList.removeChild(taskItem);
+    });
     taskItem.appendChild(deleteButton);
-
     // Append the task item to the list
     taskList.appendChild(taskItem);
   });
