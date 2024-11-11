@@ -49,8 +49,8 @@ function addTask() {
 function taskComplete(id) {
   const task = todoTasks.find((task) => task.id === id);
   if (task) {
-    task.done = true;
-    showAllTasks(); // Refresh the list to reflect the change
+    task.done = !task.done; // Växlar status, ändrar till motsatsen vad den va tidigare
+    showAllTasks();
   } else {
     alert('Task not found.');
   }
